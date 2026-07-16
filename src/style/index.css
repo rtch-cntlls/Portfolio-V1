@@ -2,23 +2,23 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .name{
     color: #0099ff;
 }
 .custom-nav-bg {
-    background-color: #5856563b;
+    background-color: #040404;
 }
 .nav-link i {
     font-size: 0.9rem;
 }
 .nav-item{
-    margin-right: 50px;
+    margin-right: 30px;
     text-transform: uppercase;
     font-weight: bold;
     font-size: 0.9rem;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .dot-container {
@@ -98,3 +98,48 @@ html::before {
     bottom: 30%;
     right: 90%;
 }
+
+.intro {
+    font-family: 'Luckiest Guy', cursive;
+    font-size: 4rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #ffffff;
+}
+
+.sans-serif{
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.img-frame-container {
+    position: relative;
+    display: inline-grid;
+    grid-template-columns: 0px 400px 0px;
+}
+
+.framed-image {
+    grid-column: 2;
+    grid-row: 2;
+    width: 100%;
+    height: auto;
+    z-index: 0;
+}
+
+.decorator-square {
+    width: 10px;
+    height: 10px;
+    background-color: #ffffff;
+    z-index: 1;
+}
+
+
+.sq-tl { grid-column: 1; grid-row: 1; justify-self: end; align-self: end;}
+.sq-tr { grid-column: 3; grid-row: 1; justify-self: start; align-self: end;}
+.sq-bl { grid-column: 1; grid-row: 3; justify-self: end; align-self: start;}
+.sq-br { grid-column: 3; grid-row: 3; justify-self: start; align-self: start;}
+
+.sq-tc { grid-column: 2; grid-row: 1; justify-self: center; align-self: end;}
+.sq-bc { grid-column: 2; grid-row: 3; justify-self: center; align-self: start;}
+.sq-ml { grid-column: 1; grid-row: 2; justify-self: end; align-self: center;}
+.sq-mr { grid-column: 3; grid-row: 2; justify-self: start; align-self: center;}
