@@ -5,9 +5,9 @@ function Nav() {
 
     const navItems = [
         { name: 'Home', icon: 'bi-house-door-fill', href: '#intro' },
-        { name: 'Education', icon: 'bi-mortarboard', href: '#' },
-        { name: 'Projects', icon: 'bi-code-square', href: '#' },
-        { name: 'About', icon: 'bi-person-vcard', href: '#' },
+        { name: 'Education', icon: 'bi-mortarboard', href: '#education' },
+        { name: 'Tech Stack', icon: 'bi-stack', href: '#stack' },
+        { name: 'Projects', icon: 'bi-code-square', href: '#project' },
         { name: 'Contact', icon: 'bi-envelope-fill', href: '#' },
     ];
 

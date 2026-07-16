@@ -1,5 +1,8 @@
 import Nav from './components/layout/nav';
 import Intro from './sections/intro';
+import Education from './sections/education';
+import Stack from './sections/stack';
+import Project from './sections/project';
 import './style/index.css';
 
 function App() {
@@ -10,10 +13,19 @@ function App() {
         <div className='sticky-top '>
           <Nav />
         </div>
-        <div className='row py-5 px-5'>
+        <div className='row py-5 px-5 gap-5'>
           <div className='col-12'>
             <Intro />
-          </div>
+          </div><hr className='text-white'/>
+          <div className='col-12'>
+            <Education />
+          </div><hr className='text-white'/>
+          <div className='col-12'>
+            <Stack />
+          </div><hr className='text-white'/>
+          <div className='col-12'>
+            <Project />
+          </div><hr className='text-white'/>
         </div>
       </main>
     </div>

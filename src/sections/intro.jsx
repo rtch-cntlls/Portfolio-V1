@@ -6,23 +6,14 @@ import { TypeAnimation } from 'react-type-animation';
 function Intro() {
     const socialLinks = [
         { 
-            label: "Email", 
-            subLabel: "rtchcntlls@email.com", 
-            href: "mailto:rtchcntlls@email.com", 
-            icon: FaEnvelope 
+            label: "Email",  subLabel: "rtchcntlls@email.com", href: "mailto:rtchcntlls@email.com",  icon: FaEnvelope 
         },
         { 
-            label: "LinkedIn", 
-            subLabel: "in/ritchie-cantillas", 
-            href: "https://linkedin.com/in/ritchie-cantillas-314543419", 
-            icon: FaLinkedin 
+            label: "LinkedIn",  subLabel: "in/ritchie-cantillas",  href: "https://linkedin.com/in/ritchie-cantillas-314543419",   icon: FaLinkedin 
         },
 
         { 
-            label: "Github", 
-            subLabel: "rtch-cntlls", 
-            href: "https://github.com/rtch-cntlls", 
-            icon: FaGithub 
+            label: "Github",  subLabel: "rtch-cntlls", href: "https://github.com/rtch-cntlls", icon: FaGithub 
         }
     ];
     return(
