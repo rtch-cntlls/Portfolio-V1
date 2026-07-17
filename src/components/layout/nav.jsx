@@ -12,7 +12,7 @@ function Nav() {
     ];
 
     return (
-        <nav className="navbar navbar-expand-lg p-2 px-5 rounded-5 custom-nav-bg">
+        <nav className="navbar navbar-expand-lg p-2 px-5 rounded-5 custom-nav-bg d-none d-lg-flex">
            <a className="navbar-brand ms-3" href="#">
                 <span className="dot-container">
                     <span className="dot"></span>

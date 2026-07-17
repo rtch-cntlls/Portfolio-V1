@@ -18,7 +18,7 @@ function Intro() {
     ];
     return(
         <section className="sans-serif text-white-50 d-flex align-itens-center justify-content-between gap-5" id='intro'>
-            <div>
+            <div className='w-100 w-md-75'>
                 <h1 className="intro">
                     <TypeAnimation
                         sequence={[
@@ -37,7 +37,7 @@ function Intro() {
                     Skilled at turning designs into clean, accessible code that works seamlessly for users. A dedicated developer who
                     bridges the gap between beautiful visual design and solid technical performance to build great web applications.
                 </p>
-                <div className="d-flex gap-3">
+                <div className="d-flex gap-2 gap-md-3">
                     {socialLinks.map((link, index) => (
                         <Buttons 
                             key={index} 
@@ -49,7 +49,7 @@ function Intro() {
                     ))}
                 </div>
             </div>
-            <div className="img-frame-container">
+            <div className="img-frame-container ">
 
                 <div className="decorator-square sq-tl"></div>
                 <div className="decorator-square sq-tr"></div>

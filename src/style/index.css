@@ -172,3 +172,35 @@ html::before {
   50% { transform: rotateY(180deg); }
   100% { transform: rotateY(360deg); }
 }
+
+@media (max-width: 768px) {
+    .img-frame-container {
+        display: none !important;
+    }
+    .btn-outline-dark {
+        width: 140px !important; 
+        height: 100px !important;
+        padding: 1rem !important;
+    }
+
+    .btn-outline-dark span {
+        font-size: 0.85rem;
+    }
+
+    .btn-outline-dark .small {
+        font-size: 0.7rem;
+    }
+}
+
+.social-link {
+    color: #888;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.social-link:hover {
+    color: #fff;
+    transform: translateY(-3px);
+}

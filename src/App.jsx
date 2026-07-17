@@ -10,7 +10,7 @@ import './style/index.css';
 function App() {
 
   return (
-    <div className='container py-3'>
+    <div className='container'>
       <main>
         <div className='sticky-top '>
           <Nav />
