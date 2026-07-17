@@ -1,6 +1,7 @@
-import { FaHtml5, FaCss3Alt, FaJs, FaReact, FaNodeJs, FaBootstrap, FaPhp, FaLaravel, FaJava, FaServer } from 'react-icons/fa';
-import { SiNextdotjs, SiSupabase, SiMysql, SiPostgresql, SiDotnet, SiC, SiGit, SiGithub  } from 'react-icons/si';
+import { FaHtml5, FaCss3Alt, FaJs, FaReact, FaBootstrap, FaPhp, FaLaravel, FaJava, FaServer } from 'react-icons/fa';
+import { SiNextdotjs, SiSupabase, SiMysql, SiPostgresql, SiDotnet, SiC, SiGit, SiGithub, SiTask,  } from 'react-icons/si';
 import { VscTerminal } from "react-icons/vsc";
+import Other from './skills'
 
 function Stack() {
     const stack = [
@@ -25,6 +26,7 @@ function Stack() {
         { title: 'Tools', name: 'VS Code', icon: VscTerminal , color: 'text-white' },
         { title: 'Tools', name: 'Visual Studio', icon: VscTerminal , color: 'text-white' },
         { title: 'Tools', name: 'XAMPP', icon: FaServer , color: 'text-white' },
+        { title: 'Methodologies', name: 'Waterfall Model', icon: SiTask, color: 'text-info' },
     ];
 
     const categories = [...new Set(stack.map(item => item.title))];
@@ -41,7 +43,7 @@ function Stack() {
                         {category}
                     </h6>
 
-                    <div className="d-flex flex-wrap gap-3 mb-4">
+                    <div className="d-flex flex-wrap gap-3 mb-4 ">
                         {stack
                             .filter(item => item.title === category)
                             .map((item, index) => {
@@ -49,9 +51,9 @@ function Stack() {
                                 return (
                                     <div 
                                         key={index} 
-                                        className="bg-dark text-white px-3 py-2 rounded d-flex align-items-center border border-secondary shadow-sm"
+                                        className="stack bg-dark text-white px-3 py-2 rounded d-flex align-items-center border border-secondary shadow-sm"
                                         style={{ gap: '10px' }}>
-                                        <Icon size={30} className={item.color} />
+                                        <Icon size={25} className={item.color} />
                                         <span className="fw-medium" style={{ fontSize: '0.85rem' }}>{item.name}</span>
                                     </div>
                                 );
@@ -59,6 +61,7 @@ function Stack() {
                     </div>
                 </div>
             ))}
+            <Other/>
         </section>
     );
 }

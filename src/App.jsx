@@ -3,6 +3,8 @@ import Intro from './sections/intro';
 import Education from './sections/education';
 import Stack from './sections/stack';
 import Project from './sections/project';
+import About from './sections/about';
+import Footer from './sections/footer';
 import './style/index.css';
 
 function App() {
@@ -26,6 +28,12 @@ function App() {
           <div className='col-12'>
             <Project />
           </div><hr className='text-white'/>
+          <div className='col-12'>
+            <About />
+          </div>
+          <div className='col-12'>
+            <Footer />
+          </div>
         </div>
       </main>
     </div>

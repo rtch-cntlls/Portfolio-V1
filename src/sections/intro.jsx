@@ -1,4 +1,4 @@
-import Image from '../assets/images/pfp.jpg';
+import Image from '../assets/images/profile.png';
 import Buttons from '../components/common/buttons';
 import { FaEnvelope, FaLinkedin, FaGithub } from 'react-icons/fa';
 import { TypeAnimation } from 'react-type-animation';
@@ -50,19 +50,17 @@ function Intro() {
                 </div>
             </div>
             <div className="img-frame-container">
-                {/* 4 Corners */}
+
                 <div className="decorator-square sq-tl"></div>
                 <div className="decorator-square sq-tr"></div>
                 <div className="decorator-square sq-bl"></div>
                 <div className="decorator-square sq-br"></div>
 
-                {/* 4 Centers */}
                 <div className="decorator-square sq-tc"></div>
                 <div className="decorator-square sq-bc"></div>
                 <div className="decorator-square sq-ml"></div>
                 <div className="decorator-square sq-mr"></div>
 
-                {/* The Image */}
                 <img src={Image} alt="Rtch PFP" className="framed-image" />
             </div>
         </section>

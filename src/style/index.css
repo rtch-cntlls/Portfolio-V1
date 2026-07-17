@@ -107,7 +107,7 @@ html::before {
     color: #ffffff;
 }
 
-.sans-serif{
+.sans-serif, .text-white-50{
     text-align: justify;
     text-justify: inter-word;
 }
@@ -143,3 +143,32 @@ html::before {
 .sq-bc { grid-column: 2; grid-row: 3; justify-self: center; align-self: start;}
 .sq-ml { grid-column: 1; grid-row: 2; justify-self: end; align-self: center;}
 .sq-mr { grid-column: 3; grid-row: 2; justify-self: start; align-self: center;}
+
+.project-card{
+    transition: transform 0.2s ease-in-out;
+}
+
+.project-card:hover{
+    transform: scale(1.02);
+}
+
+.stack {
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.stack:hover {
+  transform: translateY(-5px);
+  border-color: var(--bs-primary) !important;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3) !important;
+}
+
+.stack:hover svg {
+  animation: doubleFlip 0.8s ease-in-out;
+}
+
+@keyframes doubleFlip {
+  0% { transform: rotateY(0deg); }
+  50% { transform: rotateY(180deg); }
+  100% { transform: rotateY(360deg); }
+}

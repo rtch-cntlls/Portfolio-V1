@@ -8,7 +8,7 @@ function Nav() {
         { name: 'Education', icon: 'bi-mortarboard', href: '#education' },
         { name: 'Tech Stack', icon: 'bi-stack', href: '#stack' },
         { name: 'Projects', icon: 'bi-code-square', href: '#project' },
-        { name: 'Contact', icon: 'bi-envelope-fill', href: '#' },
+        { name: 'About', icon: 'bi-person-fill', href: '#about' },
     ];
 
     return (
