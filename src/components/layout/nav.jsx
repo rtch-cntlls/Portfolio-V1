@@ -12,14 +12,14 @@ function Nav() {
     ];
 
     return (
-        <nav className="navbar navbar-expand-lg p-2 px-5 rounded-5 custom-nav-bg d-none d-lg-flex">
+        <nav className="navbar navbar-expand-lg p-2 px-5 rounded-5 custom-nav-bg d-none d-lg-flex mt-4">
            <a className="navbar-brand ms-3" href="#">
                 <span className="dot-container">
                     <span className="dot"></span>
                     <span className="dot"></span>
                     <span className="dot"></span>
                 </span>
-                <span className="ms-2 fw-bold name">RtchCntlls.<span className="text-danger">Dev</span></span>
+                <span className="ms-2 fw-bold name">Rtchcntlls<span className="text-danger">Dev</span></span>
             </a>
             
             <ul className="navbar-nav ms-auto">

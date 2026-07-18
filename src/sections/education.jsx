@@ -1,11 +1,25 @@
+import { motion } from 'framer-motion';
 import Exp from './exp';
 
 function Education() {
+    const lineVariants = {
+        hidden: { height: 0 },
+        visible: { height: '100%', transition: { duration: 1, ease: "easeInOut" } }
+    };
+
+    const itemVariants = {
+        hidden: { opacity: 0, x: -30 },
+        visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: "easeOut" } }
+    };
+
     const EducationItem = ({ school, degree, active, sy }) => (
-        <div className="mb-5 position-relative ps-4">
+        <motion.div 
+            variants={itemVariants}
+            className="mb-5 position-relative ps-4" >
             <div 
-                className={`position-absolute ${active ? 'bg-success' : 'bg-light'}`} 
-                style={{ width: '17px', height: '17px', left: '-9px', top: '4px', border: '2px solid #212529' }}></div>
+                className={`position-absolute rounded-circle ${active ? 'bg-success' : 'bg-light'}`} 
+                style={{ width: '17px', height: '17px', left: '-9px', top: '4px', border: '2px solid #212529', zIndex: 1 }}>
+            </div>
             
             <div className="d-flex flex-column">
                 <h6 className="fw-bold text-white mb-1">{school}</h6>
@@ -14,7 +28,7 @@ function Education() {
                     {sy ? `SY: ${sy}` : 'SY: N/A'}
                 </small>
             </div>
-        </div>
+        </motion.div>
     );
 
     return (
@@ -25,7 +39,17 @@ function Education() {
                         <h4 className="text-white mb-5 d-flex align-items-center">
                             <i className="bi bi-mortarboard me-3 text-success"></i>Education
                         </h4>
-                        <div className="border-start border-2 border-secondary ms-2">
+                        
+                        <motion.div 
+                            className="border-start border-2 border-secondary ms-2 position-relative"
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true, amount: 0.9 }} >
+                            <motion.div 
+                                variants={lineVariants}
+                                className="position-absolute bg-secondary"
+                                style={{ width: '2px', left: '-3px', top: 0, zIndex: 0 }} />
+                            
                             <EducationItem 
                                 school="Cebu Technological University" 
                                 degree="Bachelor of Science in Information Technology" 
@@ -35,7 +59,7 @@ function Education() {
                                 school="Don Emilio Canonigo Senior High School" 
                                 degree="Accountancy, Business, and Management"
                                 sy="2020 - 2022" />
-                        </div>
+                        </motion.div>
                     </div>
                 </div>
                 <Exp />

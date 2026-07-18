@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { BiLinkExternal, BiPlayCircle, BiLogoGithub } from 'react-icons/bi';
+import { motion } from 'framer-motion';
 import ecommerceImg from '../assets/projects/e-commerce/1.png';
 import ecommercemock from '../assets/projects/e-commerce/thumbnail.png';
 import internImg from '../assets/projects/intern/2.png';
@@ -12,7 +13,6 @@ import careImg from '../assets/projects/care/1.png';
 import caremock from '../assets/projects/care/thumbnail.png';
 import airlineImg from '../assets/projects/airline/1.png';
 import airlinemock from '../assets/projects/airline/thumbnail.png';
-
 
 function Project() {
     const [showAll, setShowAll] = useState(false);
@@ -71,15 +71,39 @@ function Project() {
 
     const displayedProjects = showAll ? projects : projects.slice(0, 4);
 
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: { staggerChildren: 0.3 }
+        }
+    };
+
+    const cardVariants = {
+        hidden: { opacity: 0, y: 20 },
+        visible: { 
+            opacity: 1, 
+            y: 0,
+            transition: { duration: 0.6, ease: "easeOut" }
+        }
+    };
+
     return (
         <section className="px-4 py-3" id='project'>
             <h4 className="text-white mb-5">
                 <i className="bi-code-square me-3 text-primary"></i>Projects
             </h4>
 
-            <div className="row g-4">
+                <motion.div 
+                    key={showAll ? 'all' : 'limited'}
+                    className="row g-4"
+                    variants={containerVariants}
+                    initial="hidden"
+                    animate="visible"
+                    viewport={{ once: true, amount: 0.1 }}
+                >
                 {displayedProjects.map((project, index) => (
-                    <div key={index} className="col-12 col-md-6">
+                    <motion.div key={index} variants={cardVariants} className="col-12 col-md-6">
                         <div className="card bg-dark border border-secondary shadow-sm h-100 project-card">
                             <img
                                 src={project.img}
@@ -106,9 +130,9 @@ function Project() {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </motion.div>
                 ))}
-            </div>
+            </motion.div>
 
             {projects.length > 4 && (
                 <div className="text-center mt-5">
@@ -120,7 +144,7 @@ function Project() {
                     </button>
                 </div>
             )}
-           {selectedProject && (
+            {selectedProject && (
                 <div
                     className="modal fade show d-block"
                     style={{ backgroundColor: 'rgba(0, 0, 0, 0.25)', backdropFilter: 'blur(5px)' }}
