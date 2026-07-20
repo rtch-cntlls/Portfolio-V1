@@ -1,4 +1,4 @@
-import Image from '../assets/images/pfp.jpg';
+import Image from '../assets/images/profile.png';
 import Buttons from '../components/common/buttons';
 import { FaEnvelope, FaLinkedin, FaGithub } from 'react-icons/fa';
 import { TypeAnimation } from 'react-type-animation';
