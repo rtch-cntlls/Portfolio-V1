@@ -1,9 +1,17 @@
-*{
+html, body {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100%;
+    height: 100%;
+    background-color: #000000;
+    overflow-x: hidden;
+  }
+  
+  * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-
+  }
 .name{
     color: #0099ff;
 }
@@ -34,7 +42,37 @@
     border-radius: 50%;
     animation: up-down 0.5s infinite ease-in-out alternate;
 }
-  
+  /* Gradient Text Effects */
+.gradient-text {
+    background: linear-gradient(135deg, #ffffff 40%, #0099ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Status Indicator Pill */
+.status-badge {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+.pulse-indicator {
+    width: 8px;
+    height: 8px;
+    background-color: #27c93f;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #27c93f;
+    animation: pulseGlow 2s infinite ease-in-out;
+}
+
+@keyframes pulseGlow {
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(39, 201, 63, 0.7); }
+    70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(39, 201, 63, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(39, 201, 63, 0); }
+}
+
+
 .dot:nth-child(1) { background-color: #ff5f56; }
 .dot:nth-child(2) { background-color: #ffbd2e; }
 .dot:nth-child(3) { background-color: #27c93f; }
@@ -45,56 +83,6 @@
 @keyframes up-down {
     0% { transform: translateY(0); }
     100% { transform: translateY(-8px); }
-}
-
-
-body {
-    background-color: black;
-    overflow-x: hidden;
-    margin: 0;
-    z-index: 1;
-}
-
-body::before,
-body::after {
-    content: '';
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(120px);
-    opacity: 0.25;
-    z-index: -1;
-    pointer-events: none;
-}
-  
-body::before {
-    width: 400px;
-    height: 400px;
-    background: #ff0e0e;
-    top: -100px;
-    right: -100px;
-}
-  
-body::after {
-    width: 500px;
-    height: 500px;
-    background: #0070f3;
-    bottom: -150px;
-    left: 300px; 
-}
-
-html::before {
-    content: '';
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(120px);
-    opacity: 0.25;
-    z-index: -1;
-    pointer-events: none;
-    width: 350px;
-    height: 350px;
-    background: #64ff0b;
-    bottom: 30%;
-    right: 90%;
 }
 
 .intro {
