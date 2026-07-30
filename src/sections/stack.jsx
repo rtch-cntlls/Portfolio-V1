@@ -1,15 +1,33 @@
 import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { 
   FaHtml5, FaCss3Alt, FaJs, FaReact, FaBootstrap, FaPhp, FaLaravel, 
-  FaJava, FaServer, FaTools, FaNetworkWired, FaKeyboard, 
-  FaFolder, FaMicrosoft 
+  FaJava, FaNetworkWired, FaKeyboard, FaFolder 
 } from 'react-icons/fa';
 import { 
-  SiNextdotjs, SiSupabase, SiMysql, SiPostgresql, SiDotnet, SiC, 
+  SiNextdotjs, SiSupabase, SiMysql, SiPostgresql, SiDotnet, 
   SiGit, SiGithub, SiTask 
 } from 'react-icons/si';
-import { VscTerminal } from "react-icons/vsc";
 import { Sparkles, MousePointerClick } from 'lucide-react';
+
+import cIcon from '../assets/images/icon/C.PNG';
+import cableIcon from '../assets/images/icon/Cable.PNG';
+import msOfficeIcon from '../assets/images/icon/MSoffice.PNG';
+import vscodeIcon from '../assets/images/icon/VScode.PNG';
+import vstudioIcon from '../assets/images/icon/VisualStudioCode.PNG';
+import xamppIcon from '../assets/images/icon/Xampp.PNG';
+
+const ImageIcon = ({ src, alt, size = 32 }) => (
+  <img 
+    src={src} 
+    alt={alt} 
+    style={{ 
+      width: `${size}px`, 
+      height: `${size}px`, 
+      objectFit: 'contain', 
+      pointerEvents: 'none' 
+    }} 
+  />
+);
 
 export default function Stack() {
   const rawStackData = [
@@ -25,23 +43,23 @@ export default function Stack() {
     { id: 'mysql', name: 'MySQL', icon: SiMysql, color: '#00758f', category: 'Database', desc: 'Relational database management system engineered for high-performance structured SQL query handling.' },
     { id: 'postgres', name: 'Postgresql', icon: SiPostgresql, color: '#336791', category: 'Database', desc: 'Advanced enterprise-grade open-source relational database emphasizing extensibility and SQL compliance.' },
     { id: 'dotnet', name: 'ASP.NET', icon: SiDotnet, color: '#512bd4', category: 'Back End', desc: 'Cross-platform backend framework developed by Microsoft for creating high-speed, enterprise web APIs.' },
-    { id: 'vbnet', name: 'VB.NET', icon: SiDotnet, color: '#239120', category: 'Back End', desc: 'Object-oriented programming language implemented on the .NET Framework.' },
     { id: 'java', name: 'Java', icon: FaJava, color: '#f89820', category: 'Languages', desc: 'High-level, class-based, object-oriented programming language engineered for cross-platform applications.' },
-    { id: 'c', name: 'C', icon: SiC, color: '#a8b9cc', category: 'Languages', desc: 'General-purpose computer programming language supporting structured programming and low-level memory access.' },
-    { id: 'csharp', name: 'C#', icon: SiC, color: '#239120', category: 'Languages', desc: 'Modern, object-oriented programming language designed by Microsoft for building software on .NET.' },
+
+    { id: 'c', name: 'C', icon: cIcon, isCustomImg: true, color: '#a8b9cc', category: 'Languages', desc: 'General-purpose computer programming language supporting structured programming and low-level memory access.' },
     { id: 'git', name: 'Git', icon: SiGit, color: '#f05032', category: 'Tools', desc: 'Distributed version control system for tracking source code revisions and facilitating team workflows.' },
     { id: 'github', name: 'Github', icon: SiGithub, color: '#ffffff', category: 'Tools', desc: 'Cloud platform for Git version control hosting, code review workflows, and automated CI/CD deployment.' },
-    { id: 'vscode', name: 'VS Code', icon: VscTerminal, color: '#007acc', category: 'Tools', desc: 'Lightweight and powerful source code editor built for modern development workflows.' },
-    { id: 'vstudio', name: 'Visual Studio', icon: VscTerminal, color: '#cb99c9', category: 'Tools', desc: 'Comprehensive integrated development environment (IDE) for .NET and C++ software creation.' },
-    { id: 'xampp', name: 'XAMPP', icon: FaServer, color: '#fb7a24', category: 'Tools', desc: 'Free open-source cross-platform web server solution package containing Apache, MariaDB, and PHP.' },
+    { id: 'vscode', name: 'VS Code', icon: vscodeIcon, isCustomImg: true, color: '#007acc', category: 'Tools', desc: 'Lightweight and powerful source code editor built for modern development workflows.' },
+    { id: 'vstudio', name: 'Visual Studio', icon: vstudioIcon, isCustomImg: true, color: '#cb99c9', category: 'Tools', desc: 'Comprehensive integrated development environment (IDE) for .NET and C++ software creation.' },
+    { id: 'xampp', name: 'XAMPP', icon: xamppIcon, isCustomImg: true, color: '#fb7a24', category: 'Tools', desc: 'Free open-source cross-platform web server solution package containing Apache, MariaDB, and PHP.' },
     { id: 'waterfall', name: 'Waterfall Model', icon: SiTask, color: '#00b4d8', category: 'Methodologies', desc: 'Sequential software development process model divided into distinct linear phases.' },
-    { id: 'cable', name: 'Cable Management', icon: FaTools, color: '#a0a0a0', category: 'Hardware', desc: 'Installation and organization of electrical and optical cables for network infrastructure cleanliness and safety.' },
+    { id: 'cable', name: 'Cable Management', icon: cableIcon, isCustomImg: true, color: '#a0a0a0', category: 'Hardware', desc: 'Installation and organization of electrical and optical cables for network infrastructure cleanliness and safety.' },
     { id: 'network', name: 'Network Configuration', icon: FaNetworkWired, color: '#00d2ff', category: 'Networking', desc: 'Setting up routers, IP routing, switches, and firewalls for operational network communications.' },
     { id: 'dataentry', name: 'Data Entry', icon: FaKeyboard, color: '#ffb703', category: 'Admin', desc: 'Efficiently entering, updating, and verifying data records within enterprise databases.' },
     { id: 'filemgmt', name: 'File Management', icon: FaFolder, color: '#00b4d8', category: 'Admin', desc: 'Organizing, storing, and securing electronic documents and directory hierarchies.' },
-    { id: 'msoffice', name: 'MS Office', icon: FaMicrosoft, color: '#d83b01', category: 'Tools', desc: 'Productivity suite including Word, Excel, and PowerPoint for operational documentation and reporting.' }
+    { id: 'msoffice', name: 'MS Office', icon: msOfficeIcon, isCustomImg: true, color: '#d83b01', category: 'Tools', desc: 'Productivity suite including Word, Excel, and PowerPoint for operational documentation and reporting.' }
   ];
 
+  const [activeCategory, setActiveCategory] = useState('All');
   const [selectedTech, setSelectedTech] = useState(rawStackData[0]);
 
   const requestRef = useRef();
@@ -49,11 +67,33 @@ export default function Stack() {
   const rotYRef = useRef(0);
   const techNodesRef = useRef([]);
 
+  // Extract unique categories for navigation
+  const categories = useMemo(() => {
+    const cats = Array.from(new Set(rawStackData.map((item) => item.category)));
+    return ['All', ...cats];
+  }, [rawStackData]);
+
+  // Filter items based on selected category
+  const filteredStackData = useMemo(() => {
+    if (activeCategory === 'All') return rawStackData;
+    return rawStackData.filter((item) => item.category === activeCategory);
+  }, [activeCategory, rawStackData]);
+
+  // Handle category tab changes
+  const handleCategoryChange = (cat) => {
+    setActiveCategory(cat);
+    const newFiltered = cat === 'All' ? rawStackData : rawStackData.filter((item) => item.category === cat);
+    if (newFiltered.length > 0) {
+      setSelectedTech(newFiltered[0]);
+    }
+  };
+
+  // Recalculate 3D sphere positions based on filtered items
   const sphereTech = useMemo(() => {
-    const numItems = rawStackData.length;
+    const numItems = filteredStackData.length;
     const radius = 175;
 
-    return rawStackData.map((tech, i) => {
+    return filteredStackData.map((tech, i) => {
       const phi = Math.acos(1 - (2 * (i + 0.5)) / numItems);
       const theta = Math.PI * (1 + Math.sqrt(5)) * i;
 
@@ -64,7 +104,7 @@ export default function Stack() {
         z0: radius * Math.sin(phi) * Math.sin(theta),
       };
     });
-  }, [rawStackData]);
+  }, [filteredStackData]);
 
   useEffect(() => {
     const radius = 175;
@@ -107,6 +147,14 @@ export default function Stack() {
     return () => cancelAnimationFrame(requestRef.current);
   }, [sphereTech, selectedTech]);
 
+  const renderIcon = (tech, size) => {
+    if (tech.isCustomImg) {
+      return <ImageIcon src={tech.icon} alt={tech.name} size={size} />;
+    }
+    const IconComponent = tech.icon;
+    return <IconComponent size={size} style={{ color: tech.color, pointerEvents: 'none' }} />;
+  };
+
   return (
     <section 
       className="py-5 px-3 px-md-4 position-relative overflow-hidden rounded-5 my-5" 
@@ -145,12 +193,40 @@ export default function Stack() {
       />
 
       <div className="container py-2 position-relative z-2">
-        <div className="row align-items-center g-5">
-          <div className="col-12 col-lg-5">
-            <h2 className="display-5 fw-bold mb-3 text-white" style={{ lineHeight: '1.2' }}>
-              Tech Stack & Skills
-            </h2>
+        {/* Header & Category Navigation */}
+        <div className="d-flex flex-column align-items-center mb-5 text-center">
+          <h2 className="display-5 fw-bold mb-3 text-white" style={{ lineHeight: '1.2' }}>
+            Tech Stack & Skills
+          </h2>
 
+          <div className="d-flex flex-wrap justify-content-center gap-2 mt-2">
+            {categories.map((cat) => {
+              const isActive = activeCategory === cat;
+              return (
+                <button
+                  key={cat}
+                  onClick={() => handleCategoryChange(cat)}
+                  className="btn btn-sm rounded-pill px-3 py-2 fw-medium transition-all"
+                  style={{
+                    backgroundColor: isActive ? 'rgba(99, 102, 241, 0.25)' : 'rgba(255, 255, 255, 0.04)',
+                    color: isActive ? '#6366f1' : '#a1a1aa',
+                    border: isActive ? '1px solid rgba(99, 102, 241, 0.5)' : '1px solid rgba(255, 255, 255, 0.08)',
+                    backdropFilter: 'blur(10px)',
+                    fontSize: '13px',
+                    letterSpacing: '0.3px',
+                    transition: 'all 0.2s ease-in-out'
+                  }}
+                >
+                  {cat}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        <div className="row align-items-center g-5">
+          {/* Details Card */}
+          <div className="col-12 col-lg-5">
             {selectedTech ? (
               <div 
                 className="p-4 rounded-4 position-relative shadow-lg"
@@ -172,7 +248,7 @@ export default function Stack() {
                       height: '52px'
                     }}
                   >
-                    <selectedTech.icon size={32} style={{ color: selectedTech.color }} />
+                    {renderIcon(selectedTech, 32)}
                   </div>
                   <div>
                     <h5 className="fw-bold mb-0 text-white">
@@ -221,6 +297,7 @@ export default function Stack() {
             )}
           </div>
 
+          {/* Interactive 3D Sphere */}
           <div className="col-12 col-lg-7 d-flex justify-content-center position-relative">
             <div 
               className="position-absolute top-50 start-50 translate-middle rounded-circle pe-none"
@@ -237,7 +314,6 @@ export default function Stack() {
               style={{ width: '380px', height: '380px', zIndex: 1 }}
             >
               {sphereTech.map((tech, i) => {
-                const IconComponent = tech.icon;
                 const isSelected = selectedTech && selectedTech.id === tech.id;
                 return (
                   <button
@@ -261,7 +337,7 @@ export default function Stack() {
                     }}
                     title={tech.name}
                   >
-                    <IconComponent size={35} style={{ color: tech.color, pointerEvents: 'none' }} />
+                    {renderIcon(tech, 35)}
                   </button>
                 );
               })}
