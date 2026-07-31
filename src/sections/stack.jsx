@@ -1,20 +1,7 @@
 import React, { useState, useEffect, useRef, useMemo } from 'react';
-import { 
-  FaHtml5, FaCss3Alt, FaJs, FaReact, FaBootstrap, FaPhp, FaLaravel, 
-  FaJava, FaNetworkWired, FaKeyboard, FaFolder 
-} from 'react-icons/fa';
-import { 
-  SiNextdotjs, SiSupabase, SiMysql, SiPostgresql, SiDotnet, 
-  SiGit, SiGithub, SiTask 
-} from 'react-icons/si';
 import { Sparkles, MousePointerClick } from 'lucide-react';
-
-import cIcon from '../assets/images/icon/C.PNG';
-import cableIcon from '../assets/images/icon/Cable.PNG';
-import msOfficeIcon from '../assets/images/icon/MSoffice.PNG';
-import vscodeIcon from '../assets/images/icon/VScode.PNG';
-import vstudioIcon from '../assets/images/icon/VisualStudioCode.PNG';
-import xamppIcon from '../assets/images/icon/Xampp.PNG';
+import { motion, AnimatePresence } from 'framer-motion';
+import { rawStackData } from '../data/stackData';
 
 const ImageIcon = ({ src, alt, size = 32 }) => (
   <img 
@@ -30,35 +17,6 @@ const ImageIcon = ({ src, alt, size = 32 }) => (
 );
 
 export default function Stack() {
-  const rawStackData = [
-    { id: 'html', name: 'HTML5', icon: FaHtml5, color: '#e34f26', category: 'Front End', desc: 'Standard markup language for creating responsive web pages and structuring web content.' },
-    { id: 'css', name: 'CSS3', icon: FaCss3Alt, color: '#1572b6', category: 'Front End', desc: 'Style sheet language used for designing, laying out, and formatting user interfaces.' },
-    { id: 'js', name: 'JavaScript', icon: FaJs, color: '#f7df1e', category: 'Front End', desc: 'Core programming language of the web used for building dynamic, interactive client-side logic.' },
-    { id: 'bootstrap', name: 'Bootstrap', icon: FaBootstrap, color: '#a855f7', category: 'Front End', desc: 'Responsive mobile-first CSS framework for rapidly prototyping responsive layouts and grid structures.' },
-    { id: 'react', name: 'React (Vite)', icon: FaReact, color: '#61dafb', category: 'Front End', desc: 'A popular JavaScript library for building fast, component-based user interfaces with modern React hooks and Vite optimization.' },
-    { id: 'next', name: 'Next.js', icon: SiNextdotjs, color: '#ffffff', category: 'Full Stack', desc: 'The React framework for production with server-side rendering, static site generation, and optimized API routing.' },
-    { id: 'php', name: 'PHP', icon: FaPhp, color: '#777bb4', category: 'Back End', desc: 'Server-side scripting language widely used for building web services and connecting backend data engines.' },
-    { id: 'laravel', name: 'Laravel', icon: FaLaravel, color: '#ff2d20', category: 'Full Stack', desc: 'A robust PHP web framework with elegant syntax, ORM database routing, and built-in authentication systems.' },
-    { id: 'supabase', name: 'Supabase', icon: SiSupabase, color: '#3ecf8e', category: 'Back End', desc: 'An open-source Firebase alternative providing instant backend infrastructure, Realtime Postgres, and Auth.' },
-    { id: 'mysql', name: 'MySQL', icon: SiMysql, color: '#00758f', category: 'Database', desc: 'Relational database management system engineered for high-performance structured SQL query handling.' },
-    { id: 'postgres', name: 'Postgresql', icon: SiPostgresql, color: '#336791', category: 'Database', desc: 'Advanced enterprise-grade open-source relational database emphasizing extensibility and SQL compliance.' },
-    { id: 'dotnet', name: 'ASP.NET', icon: SiDotnet, color: '#512bd4', category: 'Back End', desc: 'Cross-platform backend framework developed by Microsoft for creating high-speed, enterprise web APIs.' },
-    { id: 'java', name: 'Java', icon: FaJava, color: '#f89820', category: 'Languages', desc: 'High-level, class-based, object-oriented programming language engineered for cross-platform applications.' },
-
-    { id: 'c', name: 'C', icon: cIcon, isCustomImg: true, color: '#a8b9cc', category: 'Languages', desc: 'General-purpose computer programming language supporting structured programming and low-level memory access.' },
-    { id: 'git', name: 'Git', icon: SiGit, color: '#f05032', category: 'Tools', desc: 'Distributed version control system for tracking source code revisions and facilitating team workflows.' },
-    { id: 'github', name: 'Github', icon: SiGithub, color: '#ffffff', category: 'Tools', desc: 'Cloud platform for Git version control hosting, code review workflows, and automated CI/CD deployment.' },
-    { id: 'vscode', name: 'VS Code', icon: vscodeIcon, isCustomImg: true, color: '#007acc', category: 'Tools', desc: 'Lightweight and powerful source code editor built for modern development workflows.' },
-    { id: 'vstudio', name: 'Visual Studio', icon: vstudioIcon, isCustomImg: true, color: '#cb99c9', category: 'Tools', desc: 'Comprehensive integrated development environment (IDE) for .NET and C++ software creation.' },
-    { id: 'xampp', name: 'XAMPP', icon: xamppIcon, isCustomImg: true, color: '#fb7a24', category: 'Tools', desc: 'Free open-source cross-platform web server solution package containing Apache, MariaDB, and PHP.' },
-    { id: 'waterfall', name: 'Waterfall Model', icon: SiTask, color: '#00b4d8', category: 'Methodologies', desc: 'Sequential software development process model divided into distinct linear phases.' },
-    { id: 'cable', name: 'Cable Management', icon: cableIcon, isCustomImg: true, color: '#a0a0a0', category: 'Hardware', desc: 'Installation and organization of electrical and optical cables for network infrastructure cleanliness and safety.' },
-    { id: 'network', name: 'Network Configuration', icon: FaNetworkWired, color: '#00d2ff', category: 'Networking', desc: 'Setting up routers, IP routing, switches, and firewalls for operational network communications.' },
-    { id: 'dataentry', name: 'Data Entry', icon: FaKeyboard, color: '#ffb703', category: 'Admin', desc: 'Efficiently entering, updating, and verifying data records within enterprise databases.' },
-    { id: 'filemgmt', name: 'File Management', icon: FaFolder, color: '#00b4d8', category: 'Admin', desc: 'Organizing, storing, and securing electronic documents and directory hierarchies.' },
-    { id: 'msoffice', name: 'MS Office', icon: msOfficeIcon, isCustomImg: true, color: '#d83b01', category: 'Tools', desc: 'Productivity suite including Word, Excel, and PowerPoint for operational documentation and reporting.' }
-  ];
-
   const [activeCategory, setActiveCategory] = useState('All');
   const [selectedTech, setSelectedTech] = useState(rawStackData[0]);
 
@@ -67,19 +25,16 @@ export default function Stack() {
   const rotYRef = useRef(0);
   const techNodesRef = useRef([]);
 
-  // Extract unique categories for navigation
   const categories = useMemo(() => {
     const cats = Array.from(new Set(rawStackData.map((item) => item.category)));
     return ['All', ...cats];
-  }, [rawStackData]);
+  }, []);
 
-  // Filter items based on selected category
   const filteredStackData = useMemo(() => {
     if (activeCategory === 'All') return rawStackData;
     return rawStackData.filter((item) => item.category === activeCategory);
-  }, [activeCategory, rawStackData]);
+  }, [activeCategory]);
 
-  // Handle category tab changes
   const handleCategoryChange = (cat) => {
     setActiveCategory(cat);
     const newFiltered = cat === 'All' ? rawStackData : rawStackData.filter((item) => item.category === cat);
@@ -88,7 +43,6 @@ export default function Stack() {
     }
   };
 
-  // Recalculate 3D sphere positions based on filtered items
   const sphereTech = useMemo(() => {
     const numItems = filteredStackData.length;
     const radius = 175;
@@ -193,8 +147,13 @@ export default function Stack() {
       />
 
       <div className="container py-2 position-relative z-2">
-        {/* Header & Category Navigation */}
-        <div className="d-flex flex-column align-items-center mb-5 text-center">
+        <motion.div 
+          className="d-flex flex-column align-items-center mb-5 text-center"
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.5, ease: 'easeOut' }}
+        >
           <h2 className="display-5 fw-bold mb-3 text-white" style={{ lineHeight: '1.2' }}>
             Tech Stack & Skills
           </h2>
@@ -214,7 +173,7 @@ export default function Stack() {
                     backdropFilter: 'blur(10px)',
                     fontSize: '13px',
                     letterSpacing: '0.3px',
-                    transition: 'all 0.2s ease-in-out'
+                    transition: 'all 1.5s ease-in-out'
                   }}
                 >
                   {cat}
@@ -222,83 +181,17 @@ export default function Stack() {
               );
             })}
           </div>
-        </div>
+        </motion.div>
 
         <div className="row align-items-center g-5">
-          {/* Details Card */}
-          <div className="col-12 col-lg-5">
-            {selectedTech ? (
-              <div 
-                className="p-4 rounded-4 position-relative shadow-lg"
-                style={{
-                  backgroundColor: 'rgba(255, 255, 255, 0.04)',
-                  backdropFilter: 'blur(16px)',
-                  WebkitBackdropFilter: 'blur(16px)',
-                  border: `1px solid ${selectedTech.color}40`,
-                  boxShadow: `0 12px 30px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.1)`
-                }}
-              >
-                <div className="d-flex align-items-center gap-3 mb-3">
-                  <div 
-                    className="p-2 rounded-3 d-flex align-items-center justify-content-center"
-                    style={{ 
-                      backgroundColor: 'rgba(255, 255, 255, 0.06)',
-                      border: `1px solid ${selectedTech.color}50`,
-                      width: '52px',
-                      height: '52px'
-                    }}
-                  >
-                    {renderIcon(selectedTech, 32)}
-                  </div>
-                  <div>
-                    <h5 className="fw-bold mb-0 text-white">
-                      {selectedTech.name}
-                    </h5>
-                    <span 
-                      className="badge rounded-pill fw-medium px-2 py-1 mt-1 border"
-                      style={{ 
-                        backgroundColor: 'rgba(255, 255, 255, 0.05)', 
-                        borderColor: 'rgba(255, 255, 255, 0.1)',
-                        color: '#a1a1aa', 
-                        fontSize: '11px' 
-                      }}
-                    >
-                      {selectedTech.category}
-                    </span>
-                  </div>
-                </div>
 
-                <p className="mb-3 text-white-50 small" style={{ fontSize: '14px', lineHeight: '1.5' }}>
-                  {selectedTech.desc}
-                </p>
-
-                <div 
-                  className="pt-3 border-top d-flex align-items-center gap-2"
-                  style={{ borderColor: 'rgba(255, 255, 255, 0.1)' }}
-                >
-                  <Sparkles size={14} style={{ color: selectedTech.color }} />
-                  <span className="fw-semibold text-uppercase" style={{ fontSize: '11px', color: '#d4d4d8', letterSpacing: '0.5px' }}>
-                    Technology used for {selectedTech.category.toLowerCase()}
-                  </span>
-                </div>
-              </div>
-            ) : (
-              <div 
-                className="p-4 rounded-4 border border-dashed text-center"
-                style={{ 
-                  backgroundColor: 'rgba(255, 255, 255, 0.02)', 
-                  borderColor: 'rgba(255, 255, 255, 0.15)', 
-                  color: '#a1a1aa' 
-                }}
-              >
-                <MousePointerClick size={24} className="mb-2 text-white-50" />
-                <p className="mb-0 small">Click any floating tech icon on the sphere to inspect details.</p>
-              </div>
-            )}
-          </div>
-
-          {/* Interactive 3D Sphere */}
-          <div className="col-12 col-lg-7 d-flex justify-content-center position-relative">
+          <motion.div 
+            className="col-12 col-lg-7 order-2 order-lg-1 d-flex justify-content-center position-relative"
+            initial={{ opacity: 0, x: -60 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
+          >
             <div 
               className="position-absolute top-50 start-50 translate-middle rounded-circle pe-none"
               style={{
@@ -342,7 +235,95 @@ export default function Stack() {
                 );
               })}
             </div>
-          </div>
+          </motion.div>
+
+          <motion.div 
+            className="col-12 col-lg-5 order-1 order-lg-2"
+            initial={{ opacity: 0, x: 60 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1], delay: 0.1 }}
+          >
+            <AnimatePresence mode="wait">
+              {selectedTech ? (
+                <motion.div 
+                  key={selectedTech.id}
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -20 }}
+                  transition={{ duration: 0.35, ease: 'easeInOut' }}
+                  className="p-4 rounded-4 position-relative shadow-lg"
+                  style={{
+                    backgroundColor: 'rgba(255, 255, 255, 0.04)',
+                    backdropFilter: 'blur(16px)',
+                    WebkitBackdropFilter: 'blur(16px)',
+                    border: `1px solid ${selectedTech.color}40`,
+                    boxShadow: `0 12px 30px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.1)`
+                  }}
+                >
+                  <div className="d-flex align-items-center gap-3 mb-3">
+                    <div 
+                      className="p-2 rounded-3 d-flex align-items-center justify-content-center"
+                      style={{ 
+                        backgroundColor: 'rgba(255, 255, 255, 0.06)',
+                        border: `1px solid ${selectedTech.color}50`,
+                        width: '52px',
+                        height: '52px'
+                      }}
+                    >
+                      {renderIcon(selectedTech, 32)}
+                    </div>
+                    <div>
+                      <h5 className="fw-bold mb-0 text-white">
+                        {selectedTech.name}
+                      </h5>
+                      <span 
+                        className="badge rounded-pill fw-medium px-2 py-1 mt-1 border"
+                        style={{ 
+                          backgroundColor: 'rgba(255, 255, 255, 0.05)', 
+                          borderColor: 'rgba(255, 255, 255, 0.1)',
+                          color: '#a1a1aa', 
+                          fontSize: '11px' 
+                        }}
+                      >
+                        {selectedTech.category}
+                      </span>
+                    </div>
+                  </div>
+
+                  <p className="mb-3 text-white-50 small" style={{ fontSize: '14px', lineHeight: '1.5' }}>
+                    {selectedTech.desc}
+                  </p>
+
+                  <div 
+                    className="pt-3 border-top d-flex align-items-center gap-2"
+                    style={{ borderColor: 'rgba(255, 255, 255, 0.1)' }}
+                  >
+                    <Sparkles size={14} style={{ color: selectedTech.color }} />
+                    <span className="fw-semibold text-uppercase" style={{ fontSize: '11px', color: '#d4d4d8', letterSpacing: '0.5px' }}>
+                      Technology used for {selectedTech.category.toLowerCase()}
+                    </span>
+                  </div>
+                </motion.div>
+              ) : (
+                <motion.div 
+                  key="empty-state"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  className="p-4 rounded-4 border border-dashed text-center"
+                  style={{ 
+                    backgroundColor: 'rgba(255, 255, 255, 0.02)', 
+                    borderColor: 'rgba(255, 255, 255, 0.15)', 
+                    color: '#a1a1aa' 
+                  }}
+                >
+                  <MousePointerClick size={24} className="mb-2 text-white-50" />
+                  <p className="mb-0 small">Click any floating tech icon on the sphere to inspect details.</p>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </motion.div>
         </div>
       </div>
     </section>

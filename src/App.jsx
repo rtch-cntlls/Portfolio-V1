@@ -3,7 +3,6 @@ import Intro from './sections/intro';
 import Education from './sections/education';
 import Stack from './sections/stack';
 import Project from './sections/project';
-import About from './sections/about';
 import Footer from './sections/footer';
 import Ferrofluid from './components/ui/Ferrofluid';
 import './style/index.css';
@@ -49,15 +48,11 @@ function App() {
         />
       </div>
 
-      {/* Main Content Layer */}
       <div className='container p-0' style={{ position: 'relative', zIndex: 1 }}>
         <main>
-          {/* Flush Navbar Pin */}
           <div className='sticky-top m-0 p-0'>
             <Nav />
           </div>
-          
-          {/* Content Row with controlled spacing */}
           <div className='row pb-5 pt-4 px-3 px-md-5 gap-5 m-0'>
             <div className='col-12'>
               <Intro />
@@ -73,10 +68,6 @@ function App() {
             <hr className='text-white'/>
             <div className='col-12'>
               <Project />
-            </div>
-            <hr className='text-white'/>
-            <div className='col-12'>
-              <About />
             </div>
             <div className='col-12'>
               <Footer />

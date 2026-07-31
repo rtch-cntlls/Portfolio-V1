@@ -45,7 +45,7 @@ function Exp() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            transition={{ duration: 1.5, delay: 0.2 }}
         >
             <h4 className="text-white mb-4 d-flex align-items-center gap-3 fw-bold">
                 <span className="p-2 rounded-3 bg-primary bg-opacity-10 text-primary d-inline-flex align-items-center justify-content-center">
@@ -59,7 +59,7 @@ function Exp() {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.5 }}
-                transition={{ staggerChildren: 0.2 }}
+                transition={{ staggerChildren: 0.5 }}
             >
                 <motion.div 
                     variants={lineVariants}

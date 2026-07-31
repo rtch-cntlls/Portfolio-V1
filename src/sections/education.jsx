@@ -49,7 +49,7 @@ function Education() {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, amount: 0.3 }}
-                        transition={{ duration: 0.6 }}
+                        transition={{ duration: 1.5 }}
                     >
                         <h4 className="text-white mb-4 d-flex align-items-center gap-3 fw-bold">
                             <span className="p-2 rounded-3 bg-success bg-opacity-10 text-success d-inline-flex align-items-center justify-content-center">
@@ -63,7 +63,7 @@ function Education() {
                             initial="hidden"
                             whileInView="visible"
                             viewport={{ once: true, amount: 0.5 }}
-                            transition={{ staggerChildren: 0.2 }}
+                            transition={{ staggerChildren: 0.5 }}
                         >
                             <motion.div 
                                 variants={lineVariants}
