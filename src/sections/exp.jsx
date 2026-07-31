@@ -41,7 +41,7 @@ function Exp() {
 
     return (
         <motion.div 
-            className="glass-card border-glass p-4 rounded-4 h-100 position-relative overflow-hidden"
+            className="p-4 rounded-4 h-100 position-relative overflow-hidden"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}

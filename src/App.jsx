@@ -1,51 +1,35 @@
+import { useRef } from 'react';
 import Nav from './components/layout/nav';
 import Intro from './sections/intro';
 import Education from './sections/education';
 import Stack from './sections/stack';
 import Project from './sections/project';
 import Footer from './sections/footer';
-import Ferrofluid from './components/ui/Ferrofluid';
 import './style/index.css';
 import './style/intro.css';
 
 function App() {
+  const bgRef = useRef(null);
+
+  const handleMouseMove = (e) => {
+    if (!bgRef.current) return;
+    const rect = bgRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    
+    bgRef.current.style.setProperty('--mouse-x', `${x}px`);
+    bgRef.current.style.setProperty('--mouse-y', `${y}px`);
+  };
+
   return (
     <div 
-      className='app-wrapper' 
-      style={{ 
-        position: 'relative', 
-        minHeight: '100vh',
-        backgroundColor: '#000000',
-        color: '#ffffff'
-      }}
+      onMouseMove={handleMouseMove}
+      style={{ position: 'relative', minHeight: '100vh' }}
     >
-      <div 
-        style={{ 
-          position: 'fixed', 
-          top: 0, 
-          left: 0, 
-          width: '100vw', 
-          height: '100vh', 
-          zIndex: 0, 
-          pointerEvents: 'none'
-        }}
-      >
-        <Ferrofluid
-          colors={["#ffffff", "#ffffff", "#ffffff"]}
-          speed={0.5}
-          scale={1.6}
-          turbulence={1}
-          fluidity={0.1}
-          rimWidth={0.2}
-          sharpness={2.5}
-          shimmer={1.5}
-          glow={2}
-          flowDirection="down"
-          opacity={1}
-          mouseInteraction
-          mouseStrength={1}
-          mouseRadius={0.35}
-        />
+      <div ref={bgRef} className="bg-grid-wrapper">
+        <div className="bg-grid" />
+        <div className="bg-grid-hover" />
+        <div className="bg-radial-glow" />
       </div>
 
       <div className='container p-0' style={{ position: 'relative', zIndex: 1 }}>

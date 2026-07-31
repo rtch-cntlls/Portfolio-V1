@@ -17,7 +17,6 @@ const ImageIcon = ({ src, alt, size = 32 }) => (
 );
 
 export default function Stack() {
-  const [activeCategory, setActiveCategory] = useState('All');
   const [selectedTech, setSelectedTech] = useState(rawStackData[0]);
 
   const requestRef = useRef();
@@ -25,29 +24,11 @@ export default function Stack() {
   const rotYRef = useRef(0);
   const techNodesRef = useRef([]);
 
-  const categories = useMemo(() => {
-    const cats = Array.from(new Set(rawStackData.map((item) => item.category)));
-    return ['All', ...cats];
-  }, []);
-
-  const filteredStackData = useMemo(() => {
-    if (activeCategory === 'All') return rawStackData;
-    return rawStackData.filter((item) => item.category === activeCategory);
-  }, [activeCategory]);
-
-  const handleCategoryChange = (cat) => {
-    setActiveCategory(cat);
-    const newFiltered = cat === 'All' ? rawStackData : rawStackData.filter((item) => item.category === cat);
-    if (newFiltered.length > 0) {
-      setSelectedTech(newFiltered[0]);
-    }
-  };
-
   const sphereTech = useMemo(() => {
-    const numItems = filteredStackData.length;
-    const radius = 175;
+    const numItems = rawStackData.length;
+    const radius = 230;
 
-    return filteredStackData.map((tech, i) => {
+    return rawStackData.map((tech, i) => {
       const phi = Math.acos(1 - (2 * (i + 0.5)) / numItems);
       const theta = Math.PI * (1 + Math.sqrt(5)) * i;
 
@@ -58,10 +39,10 @@ export default function Stack() {
         z0: radius * Math.sin(phi) * Math.sin(theta),
       };
     });
-  }, [filteredStackData]);
+  }, []);
 
   useEffect(() => {
-    const radius = 175;
+    const radius = 230;
     const radX = (15 * Math.PI) / 180;
 
     const animate = (time) => {
@@ -113,39 +94,7 @@ export default function Stack() {
     <section 
       className="py-5 px-3 px-md-4 position-relative overflow-hidden rounded-5 my-5" 
       id="stack"
-      style={{
-        backgroundColor: 'rgba(15, 17, 23, 0.75)',
-        backdropFilter: 'blur(20px)',
-        WebkitBackdropFilter: 'blur(20px)',
-        border: '1px solid rgba(255, 255, 255, 0.08)',
-        boxShadow: '0 20px 50px rgba(0, 0, 0, 0.6)'
-      }}
     >
-      <div 
-        className="position-absolute rounded-circle pe-none"
-        style={{
-          width: '350px',
-          height: '350px',
-          top: '-100px',
-          left: '-100px',
-          background: 'radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, rgba(0,0,0,0) 70%)',
-          filter: 'blur(40px)',
-          zIndex: 0
-        }}
-      />
-      <div 
-        className="position-absolute rounded-circle pe-none"
-        style={{
-          width: '400px',
-          height: '400px',
-          bottom: '-150px',
-          right: '-100px',
-          background: 'radial-gradient(circle, rgba(236, 72, 153, 0.15) 0%, rgba(0,0,0,0) 70%)',
-          filter: 'blur(50px)',
-          zIndex: 0
-        }}
-      />
-
       <div className="container py-2 position-relative z-2">
         <motion.div 
           className="d-flex flex-column align-items-center mb-5 text-center"
@@ -157,30 +106,6 @@ export default function Stack() {
           <h2 className="display-5 fw-bold mb-3 text-white" style={{ lineHeight: '1.2' }}>
             Tech Stack & Skills
           </h2>
-
-          <div className="d-flex flex-wrap justify-content-center gap-2 mt-2">
-            {categories.map((cat) => {
-              const isActive = activeCategory === cat;
-              return (
-                <button
-                  key={cat}
-                  onClick={() => handleCategoryChange(cat)}
-                  className="btn btn-sm rounded-pill px-3 py-2 fw-medium transition-all"
-                  style={{
-                    backgroundColor: isActive ? 'rgba(99, 102, 241, 0.25)' : 'rgba(255, 255, 255, 0.04)',
-                    color: isActive ? '#6366f1' : '#a1a1aa',
-                    border: isActive ? '1px solid rgba(99, 102, 241, 0.5)' : '1px solid rgba(255, 255, 255, 0.08)',
-                    backdropFilter: 'blur(10px)',
-                    fontSize: '13px',
-                    letterSpacing: '0.3px',
-                    transition: 'all 1.5s ease-in-out'
-                  }}
-                >
-                  {cat}
-                </button>
-              );
-            })}
-          </div>
         </motion.div>
 
         <div className="row align-items-center g-5">
@@ -193,18 +118,8 @@ export default function Stack() {
             transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
           >
             <div 
-              className="position-absolute top-50 start-50 translate-middle rounded-circle pe-none"
-              style={{
-                width: '320px',
-                height: '320px',
-                background: 'radial-gradient(circle, rgba(99, 102, 241, 0.12) 0%, rgba(0,0,0,0) 70%)',
-                zIndex: 0
-              }}
-            />
-
-            <div 
               className="position-relative d-flex align-items-center justify-content-center"
-              style={{ width: '380px', height: '380px', zIndex: 1 }}
+              style={{ width: '560px', height: '620px', zIndex: 1 }}
             >
               {sphereTech.map((tech, i) => {
                 const isSelected = selectedTech && selectedTech.id === tech.id;
@@ -230,7 +145,7 @@ export default function Stack() {
                     }}
                     title={tech.name}
                   >
-                    {renderIcon(tech, 35)}
+                    {renderIcon(tech, 45)}
                   </button>
                 );
               })}
@@ -318,7 +233,7 @@ export default function Stack() {
                     color: '#a1a1aa' 
                   }}
                 >
-                  <MousePointerClick size={24} className="mb-2 text-white-50" />
+                  <MousePointerClick size={30} className="mb-2 text-white-50" />
                   <p className="mb-0 small">Click any floating tech icon on the sphere to inspect details.</p>
                 </motion.div>
               )}

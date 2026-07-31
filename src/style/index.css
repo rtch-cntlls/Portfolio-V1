@@ -43,14 +43,13 @@ html, body {
     border-radius: 50%;
     animation: up-down 0.5s infinite ease-in-out alternate;
 }
-  /* Gradient Text Effects */
+
 .gradient-text {
     background: linear-gradient(135deg, #ffffff 40%, #0099ff 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
-/* Status Indicator Pill */
 .status-badge {
     background: rgba(255, 255, 255, 0.04);
     border: 1px solid rgba(255, 255, 255, 0.12);
@@ -191,3 +190,62 @@ html, body {
     color: #fff;
     transform: translateY(-3px);
 }
+
+
+.bg-grid-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    overflow: hidden;
+    background-color: #0a0a0c;
+  }
+  
+  .bg-grid {
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    top: -50%;
+    left: -50%;
+    background-image: 
+      linear-gradient(to right, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.082) 1px, transparent 1px);
+    background-size: 50px 50px;
+    animation: gridMove 20s linear infinite;
+  }
+  
+  .bg-grid-hover {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(
+      600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+      rgba(59, 131, 246, 0.548) 0%,
+      rgba(59, 131, 246, 0.453) 30%,
+      transparent 80%
+    );
+
+    mask-image: 
+      linear-gradient(to right, #000 1px, transparent 1px),
+      linear-gradient(to bottom, #000 1px, transparent 1px);
+    mask-size: 50px 50px;
+    -webkit-mask-image: 
+      linear-gradient(to right, #000 1px, transparent 1px),
+      linear-gradient(to bottom, #000 1px, transparent 1px);
+    -webkit-mask-size: 50px 50px;
+    transition: opacity 0.3s ease;
+  }
+  
+  .bg-radial-glow {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(circle at 50% 30%, rgba(59, 130, 246, 0.12), transparent 70%);
+  }
+  
+  @keyframes gridMove {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(50px, 50px); }
+  }
