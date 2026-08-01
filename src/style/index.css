@@ -249,3 +249,32 @@ html, body {
     0% { transform: translate(0, 0); }
     100% { transform: translate(50px, 50px); }
   }
+
+
+.btn-live{
+  background-color: #2eaafcd9;
+  color: #ffffff;
+}
+
+.btn-live:hover{
+  border: 1px solid #0097fc;
+  color: #ffffff;
+}
+
+.btn-test{
+  background-color: #04882ad9;
+  color: #ffffff;
+}
+.btn-test:hover{
+  border: 1px solid #04882ad9;
+  color: #ffffff;
+}
+
+.btn-code{
+  background-color: #020202d9;
+  color: #ffffff;
+}
+.btn-code:hover{
+  background-color: #ffffffd9;
+  color: #000000;
+}

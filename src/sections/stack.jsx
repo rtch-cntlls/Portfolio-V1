@@ -92,7 +92,7 @@ export default function Stack() {
 
   return (
     <section 
-      className="py-5 px-3 px-md-4 position-relative overflow-hidden rounded-5 my-5" 
+      className="px-3 px-md-4 position-relative overflow-hidden" 
       id="stack"
     >
       <div className="container py-2 position-relative z-2">
