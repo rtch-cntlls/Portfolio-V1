@@ -22,8 +22,17 @@ import invImg4 from '../assets/projects/inv/4.png';
 import invImg5 from '../assets/projects/inv/5.png';
 import invImg6 from '../assets/projects/inv/6.png';
 
-import rentImg from '../assets/projects/rent/4.png';
-import rentmock from '../assets/projects/rent/thumbnail.png';
+import rentImg from '../assets/projects/rent/1.png';
+import rentImg1 from '../assets/projects/rent/1.png';
+import rentImg2 from '../assets/projects/rent/2.png';
+import rentImg3 from '../assets/projects/rent/3.png';
+import rentImg4 from '../assets/projects/rent/4.png';
+import rentImg5 from '../assets/projects/rent/5.png';
+import rentImg6 from '../assets/projects/rent/6.png';
+import rentImg7 from '../assets/projects/rent/7.png';
+import rentImg8 from '../assets/projects/rent/8.png';
+import rentImg9 from '../assets/projects/rent/9.png';
+
 import careImg from '../assets/projects/care/1.png';
 import caremock from '../assets/projects/care/thumbnail.png';
 import airlineImg from '../assets/projects/airline/1.png';
@@ -60,10 +69,10 @@ export const rawProjectData = [
         id: 'rent',
         title: 'Property Rental Management Platform (Academic Project) - 2025',
         thumbnail: rentImg,
-        images: [rentmock],
+        images: [rentImg1, rentImg2, rentImg3, rentImg4, rentImg5, rentImg6, rentImg7, rentImg8, rentImg9],
         demo: '#', code: '#',
         description: 'A dynamic property rental marketplace featuring a dual-role user architecture. The platform empowers guests to transition into property hosts through an integrated upgrade request system, subject to a secure administrative approval process. Designed to streamline property listings and booking management, this project showcases expertise in role-based access control (RBAC) and end-to-end administrative oversight.',
-        techStack: ['Laravel', 'Bootstrap', 'MySQL', 'Google Auth']
+        techStack: ['Laravel', 'CSS', 'Javascript', 'Bootstrap', 'MySQL', 'Google Auth']
     },
     {
         id: 'airline',
@@ -72,7 +81,7 @@ export const rawProjectData = [
         images: [airlinemock],
         demo: '#', code: '#',
         description: 'SkyBook is an all-in-one system designed to manage every part of an airline, from the ground up. It starts by organizing the basics, like airports, planes, and flight routes. From there, it handles flight scheduling and automatically sets ticket prices based on seat class and special deals. Passengers can easily book their flights, while the system records every reservation in real-time. Finally, it provides clear reports on how much money is being made and how well the flights are running.',
-        techStack: ['Laravel', 'Bootstrap', 'MySQL', 'Google Auth']
+        techStack: ['Laravel', 'CSS', 'Javascript', 'Bootstrap', 'MySQL', 'Google Auth']
     },
     {
         id: 'care',

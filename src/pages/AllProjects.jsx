@@ -22,7 +22,7 @@ function ProjectCarousel({ images, title }) {
     const [[page, direction], setPage] = useState([0, 0]);
 
     const imageList = Array.isArray(images) 
-        ? images.slice(0, 5) 
+        ? images.slice(0, 10) 
         : [images].filter(Boolean);
 
     const currentIndex = Math.abs(page % imageList.length);
@@ -133,7 +133,7 @@ function AllProjects() {
                         <motion.div 
                             key={project.id || project.title} 
                             variants={cardVariants}
-                            className="card bg-dark border border-secondary shadow-sm overflow-hidden"
+                            className="rounded border border-secondary shadow-sm overflow-hidden"
                         >
                             <div className="row g-0">
                                 <div className="col-12 col-md-6 p-4 d-flex flex-column justify-content-between">
