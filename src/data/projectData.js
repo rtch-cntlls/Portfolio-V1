@@ -32,6 +32,7 @@ import rentImg6 from '../assets/projects/rent/6.png';
 import rentImg7 from '../assets/projects/rent/7.png';
 import rentImg8 from '../assets/projects/rent/8.png';
 import rentImg9 from '../assets/projects/rent/9.png';
+import rentImg10 from '../assets/projects/rent/10.png';
 
 import careImg from '../assets/projects/care/1.png';
 import caremock from '../assets/projects/care/thumbnail.png';
@@ -67,29 +68,29 @@ export const rawProjectData = [
     },
     {
         id: 'rent',
-        title: 'Property Rental Management Platform (Academic Project) - 2025',
+        title: 'Property Rental Management Platform (Academic Project) - 2025 revised in 2026',
         thumbnail: rentImg,
-        images: [rentImg1, rentImg2, rentImg3, rentImg4, rentImg5, rentImg6, rentImg7, rentImg8, rentImg9],
+        images: [rentImg1, rentImg2, rentImg3, rentImg4, rentImg5, rentImg6, rentImg7, rentImg8, rentImg9, rentImg10],
         demo: '#', code: '#',
         description: 'A dynamic property rental marketplace featuring a dual-role user architecture. The platform empowers guests to transition into property hosts through an integrated upgrade request system, subject to a secure administrative approval process. Designed to streamline property listings and booking management, this project showcases expertise in role-based access control (RBAC) and end-to-end administrative oversight.',
         techStack: ['Laravel', 'CSS', 'Javascript', 'Bootstrap', 'MySQL', 'Google Auth']
     },
-    {
-        id: 'airline',
-        title: 'Airline Booking Management System (Personal Project) - 2026',
-        thumbnail: airlineImg,
-        images: [airlinemock],
-        demo: '#', code: '#',
-        description: 'SkyBook is an all-in-one system designed to manage every part of an airline, from the ground up. It starts by organizing the basics, like airports, planes, and flight routes. From there, it handles flight scheduling and automatically sets ticket prices based on seat class and special deals. Passengers can easily book their flights, while the system records every reservation in real-time. Finally, it provides clear reports on how much money is being made and how well the flights are running.',
-        techStack: ['Laravel', 'CSS', 'Javascript', 'Bootstrap', 'MySQL', 'Google Auth']
-    },
-    {
-        id: 'care',
-        title: 'Clinic Management System (Academic Project) - 2025',
-        thumbnail: careImg,
-        images: [caremock],
-        demo: '#', code: '#',
-        description: 'This is an all-in-one system designed to help clinics run smoothly by keeping all information in one place. Instead of using different programs for different tasks, this platform connects everything including patient appointments, medicine inventory, and billing into a single, easy-to-use system. It features six custom dashboards for doctors, admins, patients, cashiers, pharmacists, and receptionists, giving each user access only to the tools they need. By automating daily tasks and keeping data perfectly synced, this system saves time, prevents mistakes, and helps owners easily track how their clinic is doing.',
-        techStack: ['Laravel', 'Bootstrap', 'MySQL', 'Google Auth']
-    },
+    // {
+    //     id: 'airline',
+    //     title: 'Airline Booking Management System (Personal Project) - 2026',
+    //     thumbnail: airlineImg,
+    //     images: [airlinemock],
+    //     demo: '#', code: '#',
+    //     description: 'SkyBook is an all-in-one system designed to manage every part of an airline, from the ground up. It starts by organizing the basics, like airports, planes, and flight routes. From there, it handles flight scheduling and automatically sets ticket prices based on seat class and special deals. Passengers can easily book their flights, while the system records every reservation in real-time. Finally, it provides clear reports on how much money is being made and how well the flights are running.',
+    //     techStack: ['Laravel', 'CSS', 'Javascript', 'Bootstrap', 'MySQL', 'Google Auth']
+    // },
+    // {
+    //     id: 'care',
+    //     title: 'Clinic Management System (Academic Project) - 2025',
+    //     thumbnail: careImg,
+    //     images: [caremock],
+    //     demo: '#', code: '#',
+    //     description: 'This is an all-in-one system designed to help clinics run smoothly by keeping all information in one place. Instead of using different programs for different tasks, this platform connects everything including patient appointments, medicine inventory, and billing into a single, easy-to-use system. It features six custom dashboards for doctors, admins, patients, cashiers, pharmacists, and receptionists, giving each user access only to the tools they need. By automating daily tasks and keeping data perfectly synced, this system saves time, prevents mistakes, and helps owners easily track how their clinic is doing.',
+    //     techStack: ['Laravel', 'Bootstrap', 'MySQL', 'Google Auth']
+    // },
 ];
