@@ -37,7 +37,14 @@ import rentImg10 from '../assets/projects/rent/10.png';
 import careImg from '../assets/projects/care/1.png';
 import caremock from '../assets/projects/care/thumbnail.png';
 import airlineImg from '../assets/projects/airline/1.png';
-import airlinemock from '../assets/projects/airline/thumbnail.png';
+import airlineImg1 from '../assets/projects/airline/1.png';
+import airlineImg2 from '../assets/projects/airline/2.png';
+import airlineImg3 from '../assets/projects/airline/3.png';
+import airlineImg4 from '../assets/projects/airline/4.png';
+import airlineImg5 from '../assets/projects/airline/5.png';
+import airlineImg6 from '../assets/projects/airline/6.png';
+import airlineImg7 from '../assets/projects/airline/7.png';
+import airlineImg8 from '../assets/projects/airline/8.png';
 
 export const rawProjectData = [
     {
@@ -75,15 +82,15 @@ export const rawProjectData = [
         description: 'A dynamic property rental marketplace featuring a dual-role user architecture. The platform empowers guests to transition into property hosts through an integrated upgrade request system, subject to a secure administrative approval process. Designed to streamline property listings and booking management, this project showcases expertise in role-based access control (RBAC) and end-to-end administrative oversight.',
         techStack: ['Laravel', 'CSS', 'Javascript', 'Bootstrap', 'MySQL', 'Google Auth']
     },
-    // {
-    //     id: 'airline',
-    //     title: 'Airline Booking Management System (Personal Project) - 2026',
-    //     thumbnail: airlineImg,
-    //     images: [airlinemock],
-    //     demo: '#', code: '#',
-    //     description: 'SkyBook is an all-in-one system designed to manage every part of an airline, from the ground up. It starts by organizing the basics, like airports, planes, and flight routes. From there, it handles flight scheduling and automatically sets ticket prices based on seat class and special deals. Passengers can easily book their flights, while the system records every reservation in real-time. Finally, it provides clear reports on how much money is being made and how well the flights are running.',
-    //     techStack: ['Laravel', 'CSS', 'Javascript', 'Bootstrap', 'MySQL', 'Google Auth']
-    // },
+    {
+        id: 'airline',
+        title: 'Airline Booking Management System (Personal Project) - 2026',
+        thumbnail: airlineImg,
+        images: [airlineImg1, airlineImg2, airlineImg3, airlineImg4, airlineImg5, airlineImg6, airlineImg7, airlineImg8],
+        demo: '#', code: '#',
+        description: 'Skyline is an all-in-one system designed to manage every part of an airline, from the ground up. It starts by organizing the basics, like airports, planes, and flight routes. From there, it handles flight scheduling and automatically sets ticket prices based on seat class and special deals. Passengers can easily book their flights, while the system records every reservation in real-time. Finally, it provides clear reports on how much money is being made and how well the flights are running.',
+        techStack: ['Laravel', 'CSS', 'Javascript', 'Bootstrap', 'MySQL', 'Google Auth']
+    },
     // {
     //     id: 'care',
     //     title: 'Clinic Management System (Academic Project) - 2025',
