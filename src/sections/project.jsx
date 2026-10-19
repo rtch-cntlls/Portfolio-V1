@@ -1,103 +1,174 @@
-import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
-import { rawProjectData } from '../data/projectData';
+import { useState } from 'react';
+import { BiLinkExternal, BiPlayCircle, BiLogoGithub } from 'react-icons/bi';
+import ecommerceImg from '../assets/placeholder/project.avif';
+import ecommercemock from '../assets/placeholder/project.avif';
+import internImg from '../assets/placeholder/project.avif';
+import internmock from '../assets/placeholder/project.avif';
+import invImg from '../assets/placeholder/project.avif';
+import invmock from '../assets/placeholder/project.avif';
+import rentImg from '../assets/placeholder/project.avif';
+import rentmock from '../assets/placeholder/project.avif';
+import careImg from '../assets/placeholder/project.avif';
+import caremock from '../assets/placeholder/project.avif';
+import airlineImg from '../assets/placeholder/project.avif';
+import airlinemock from '../assets/placeholder/project.avif';
+
 
 function Project() {
-    const displayedProjects = rawProjectData.slice(0, 2);
+    const [showAll, setShowAll] = useState(false);
+    const [selectedProject, setSelectedProject] = useState(null);
 
-    const containerVariants = {
-        hidden: { opacity: 0 },
-        visible: {
-            opacity: 1,
-            transition: { 
-                staggerChildren: 0.15,
-                delayChildren: 0.1 
-            }
-        }
-    };
+const projects = [
+        {
+            title: 'Project Title Placeholder 1 (Capstone Project) - 2025',
+            img: ecommerceImg,
+            mockup: ecommercemock,
+            link: '#', demo: '#', code: '#',
+            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+            techStack: ['Technology A', 'Technology B', 'Technology C', 'API Integration 1', 'API Integration 2']
+        },
+        {
+            title: 'Project Title Placeholder 2 (Internship Project) - 2026',
+            img: internImg,
+            mockup: internmock,
+            link: '#', demo: '#', code: '#',
+            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+            techStack: ['Technology A', 'Technology B', 'Technology C']
+        },
+        {
+            title: 'Project Title Placeholder 3 (Personal Project) - 2026',
+            img: invImg,
+            mockup: invmock,
+            link: '#', demo: '#', code: '#',
+            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+            techStack: ['Technology A', 'Technology B', 'Technology C']
+        },
+        {
+            title: 'Project Title Placeholder 4 (Academic Project) - 2025',
+            img: rentImg,
+            mockup: rentmock,
+            link: '#', demo: '#', code: '#',
+            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+            techStack: ['Technology A', 'Technology B', 'Technology C']
+        },
+        {
+            title: 'Project Title Placeholder 5 (Personal Project) - 2026',
+            img: airlineImg,
+            mockup: airlinemock,
+            link: '#', demo: '#', code: '#',
+            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+            techStack: ['Technology A', 'Technology B', 'Technology C']
+        },
+        {
+            title: 'Project Title Placeholder 6 (Academic Project) - 2025',
+            img: careImg,
+            mockup: caremock,
+            link: '#', demo: '#', code: '#',
+            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+            techStack: ['Technology A', 'Technology B', 'Technology C']
+        },
+    ];
 
-    const cardVariants = {
-        hidden: { opacity: 0, y: 30 },
-        visible: { 
-            opacity: 1, 
-            y: 0,
-            transition: { duration: 0.5, ease: [0.25, 0.1, 0.25, 1.0] }
-        }
-    };
+    const displayedProjects = showAll ? projects : projects.slice(0, 4);
 
     return (
         <section className="px-4 py-3" id='project'>
-            <div className="d-flex align-items-center justify-content-between mb-4">
-                <h4 className="text-white mb-0">
-                    <i className="bi bi-pin-angle-fill me-2 text-primary"></i>Pinned Projects
-                </h4>
-            </div>
+            <h4 className="text-white mb-5">
+                <i className="bi-code-square me-3 text-primary"></i>Projects
+            </h4>
 
-            <motion.div 
-                className="row g-4"
-                variants={containerVariants}
-                initial="hidden"
-                animate="visible"
-            >
-                {displayedProjects.map((project) => (
-                    <motion.div 
-                        key={project.id || project.title} 
-                        variants={cardVariants} 
-                        className="col-12 col-md-6"
-                    >
-                        <motion.div 
-                            className="card bg-dark border border-primary border-opacity-25 shadow-sm h-100 project-card overflow-hidden position-relative"
-                            whileHover={{ y: -6, transition: { duration: 0.2 } }}
-                        >
-                            <div 
-                                className="position-absolute top-0 end-0 m-3 px-2 py-1 rounded-pill d-flex align-items-center gap-1"
-                                style={{ 
-                                    backgroundColor: 'rgba(13, 109, 253, 0.43)', 
-                                    backdropFilter: 'blur(4px)',
-                                    zIndex: 2,
-                                    fontSize: '0.75rem'
-                                }}
-                            >
-                                <i className="bi bi-pin-fill text-danger"></i>
-                                <span className="fw-semibold text-white">Pinned</span>
-                            </div>
-
-                            <div className="overflow-hidden" style={{ height: '220px' }}>
-                                <motion.img
-                                    src={project.thumbnail || project.img}
-                                    alt={project.title}
-                                    className="card-img-top w-100 h-100"
-                                    style={{ objectFit: 'cover' }}
-                                    whileHover={{ scale: 1.05 }}
-                                    transition={{ duration: 0.3 }}
-                                />
-                            </div>
+            <div className="row g-4">
+                {displayedProjects.map((project, index) => (
+                    <div key={index} className="col-12 col-md-6">
+                        <div className="card bg-dark border border-secondary shadow-sm h-100 project-card">
+                            <img
+                                src={project.img}
+                                alt={project.title}
+                                className="card-img-top"
+                                style={{ height: '180px', objectFit: 'cover' }}
+                            />
                             <div className="card-body d-flex flex-column justify-content-between">
-                                <h6 className="text-white fw-bold mb-2">{project.title}</h6>
-                                {project.techStack && (
-                                    <div className="d-flex flex-wrap gap-1 mt-auto pt-2">
-                                        {project.techStack.map((tech) => (
-                                            <span 
-                                                key={tech} 
-                                                className="badge border border-secondary text-secondary-light fw-normal"
-                                                style={{ backgroundColor: 'rgba(255,255,255,0.05)', fontSize: '0.7rem' }}
-                                            >
-                                                {tech}
-                                            </span>
-                                        ))}
-                                    </div>
-                                )}
+                                <div>
+                                    <h6 className="text-white fw-bold">{project.title}</h6>
+                                </div>
+                                <div className='d-flex gap-2 flex-wrap mt-3'>
+                                    <button
+                                        onClick={() => setSelectedProject(project)}
+                                        className="btn btn-sm btn-outline-light d-flex align-items-center" >
+                                        <BiLinkExternal className="me-1" /> View Details
+                                    </button>
+                                    <a href={project.demo} target="_blank" rel="noopener noreferrer" className="btn btn-sm btn-outline-light d-flex align-items-center">
+                                        <BiPlayCircle className="me-1" /> Demo
+                                    </a>
+                                    <a href={project.code} target="_blank" rel="noopener noreferrer" className="btn btn-sm btn-outline-light d-flex align-items-center">
+                                        <BiLogoGithub className="me-1" /> Code
+                                    </a>
+                                </div>
                             </div>
-                        </motion.div>
-                    </motion.div>
+                        </div>
+                    </div>
                 ))}
-            </motion.div>
-
-            <div className="text-center mt-5">
-                <Link to="/projects" className="btn btn-outline-primary px-4 py-2">
-                    View All Projects ({rawProjectData.length}) <i className="bi bi-arrow-right ms-1"></i>
-                </Link>
             </div>
+
+            {projects.length > 4 && (
+                <div className="text-center mt-5">
+                    <button
+                        onClick={() => setShowAll(!showAll)}
+                        className="btn btn-outline-primary"
+                    >
+                        {showAll ? 'Show Less' : `View All (${projects.length}) Projects`}
+                    </button>
+                </div>
+            )}
+           {selectedProject && (
+                <div
+                    className="modal fade show d-block"
+                    style={{ backgroundColor: 'rgba(0, 0, 0, 0.25)', backdropFilter: 'blur(5px)' }}
+                    onClick={() => setSelectedProject(null)} >
+                    <div className="modal-dialog modal-dialog-centered modal-lg" onClick={(e) => e.stopPropagation()}>
+                        <div className="modal-content border-0 shadow-lg" style={{backgroundColor: 'rgba(48, 48, 48, 0.75)', backdropFilter: 'blur(5px)', borderRadius: '15px', overflow: 'hidden' }}>
+                            
+                            <div className="d-flex align-items-center p-3" style={{ backgroundColor: '#2d2d2d' }}>
+                                <div className="d-flex gap-2">
+                                    <div style={{ width: '12px', height: '12px', borderRadius: '50%', backgroundColor: '#ff5f56' }}></div>
+                                    <div style={{ width: '12px', height: '12px', borderRadius: '50%', backgroundColor: '#ffbd2e' }}></div>
+                                    <div style={{ width: '12px', height: '12px', borderRadius: '50%', backgroundColor: '#27c93f' }}></div>
+                                </div>
+                                <h6 className="text-white-50 mx-auto mb-0" style={{ fontSize: '0.8rem' }}>{selectedProject.title}</h6>
+                            </div>
+
+                            <div className="modal-body p-4">
+                                <div className="row">
+                                    <div className="col-md-6">
+                                        <img src={selectedProject.mockup} className="img-fluid rounded shadow" alt="Project"/>
+                                        <div className='d-flex gap-2 mt-3'>
+                                            <a href={selectedProject.demo} target="_blank" rel="noopener noreferrer" className="btn btn-sm btn-success d-flex align-items-center">
+                                                <BiPlayCircle className="me-1" /> Live Demo
+                                            </a>
+                                            <a href={selectedProject.code} target="_blank" rel="noopener noreferrer" className="btn btn-sm btn-outline-light d-flex align-items-center">
+                                                <BiLogoGithub className="me-1" /> Source Code
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div className="col-md-6">
+                                        <h5 className="text-white">About the Project</h5>
+                                        <p className="text-white-50 small">{selectedProject.description}</p>
+
+                                        <h6 className="mt-4 text-white">Core Technologies</h6>
+                                        <div className="d-flex flex-wrap gap-2 mt-2">
+                                            {selectedProject.techStack.map((tech) => (
+                                                <span key={tech} className="badge" style={{ backgroundColor: '#3d3d3d', color: '#e0e0e0', padding: '0.6em 1em', borderRadius: '8px' }}>
+                                                    {tech}
+                                                </span>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
         </section>
     );
 }
